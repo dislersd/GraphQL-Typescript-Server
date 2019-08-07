@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryColumn, BeforeInsert, BaseEntity } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryColumn,
+  BeforeInsert,
+  BaseEntity
+} from "typeorm";
 import * as uuidv4 from "uuid/v4";
 
 @Entity("users")
