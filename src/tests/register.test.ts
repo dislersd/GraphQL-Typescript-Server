@@ -7,7 +7,7 @@ beforeAll(async () => {
   await createTypeOrmConn();
 });
 
-const email = "bob@bob.com";
+const email = "dylan@dylan.com";
 const password = "password";
 
 const mutation = `
