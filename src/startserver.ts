@@ -13,7 +13,8 @@ export const startServer = async () => {
   const app = await server.start({
     port: process.env.NODE_ENV === "test" ? 0 : 4000
   });
-  console.log("Server is running on localhost:4000");
+  const port = app.address();
+  console.log(`Server is running at localhost:${port}`);
 
   return app;
 };
