@@ -6,7 +6,8 @@ import { formatYupError } from "../../utils/formatYupError";
 import {
   duplicateEmail,
   emailNotLongEnough,
-  invalidEmail
+  invalidEmail,
+  passwordNotLongEnough
 } from "./errorMessages";
 
 const schema = yup.object().shape({
@@ -17,7 +18,7 @@ const schema = yup.object().shape({
     .email(invalidEmail),
   password: yup
     .string()
-    .min(3)
+    .min(3, passwordNotLongEnough)
     .max(255)
 });
 

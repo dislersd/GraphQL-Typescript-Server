@@ -6,7 +6,8 @@ import { AddressInfo } from "net";
 import {
   duplicateEmail,
   emailNotLongEnough,
-  invalidEmail
+  invalidEmail,
+  passwordNotLongEnough
 } from "./errorMessages";
 
 let getHost = () => "";
@@ -59,6 +60,36 @@ test("Register User", async () => {
       {
         path: "email",
         message: invalidEmail
+      }
+    ]
+  });
+
+  // catch bad password
+  const response4 = await request(getHost(), mutation(email, "b"));
+  expect(response4).toEqual({
+    register: [
+      {
+        path: "password",
+        message: passwordNotLongEnough
+      }
+    ]
+  });
+
+  // catch bad password and bad email
+  const response5 = await request(getHost(), mutation("ee", "b"));
+  expect(response5).toEqual({
+    register: [
+      {
+        path: "email",
+        message: emailNotLongEnough
+      },
+      {
+        path: "email",
+        message: invalidEmail
+      },
+      {
+        path: "password",
+        message: passwordNotLongEnough
       }
     ]
   });
