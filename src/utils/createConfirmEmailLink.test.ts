@@ -18,8 +18,8 @@ beforeAll(async () => {
   userId = user.id;
 });
 
-afterAll(async () => {
-  await conn.close();
+afterAll(() => {
+  conn.close();
 });
 
 test("confirms user and clears key in redis", async () => {
